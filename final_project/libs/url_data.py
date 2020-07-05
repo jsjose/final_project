@@ -9,8 +9,6 @@ class urlObject:
         super().__init__()
         self.url = url
 
-        #print (self.url+' iniciando -----------------------')
-
         '''
         Parse url, decomposing in elements, preparating for test
         '''
@@ -21,11 +19,6 @@ class urlObject:
         self.path = results.path
         self.params = results.params
         self.fragment = results.fragment
-
-        #print('scheme  ',self.scheme)
-        #print('netloc  ',self.netloc)
-        #print('params  ',self.params)
-        #print('fragment  ',self.fragment )
         
         '''
         Test URL, check if url is alive (200) or not, or redirect (301). Decomposing the url's information in
@@ -33,10 +26,8 @@ class urlObject:
         '''
         if self.scheme == '':
             url2Test = 'http://'+self.path
-            #print('1 '+url2Test)
         else:
             url2Test = self.scheme+'://'+self.netloc
-            #print('2 '+url2Test)
         
         try:
             r = requests.get(url2Test, allow_redirects=AR,timeout=1)
@@ -45,8 +36,6 @@ class urlObject:
             self.status_code = r.status_code
             self.urlTested = r.url
             self.headers = r.headers
-            #if r.status_code == 301:
-            #    print (self.url+' permanent redirect')
         except TimeoutError:
             #self.isAlive = False
             print('Error Timeout:  '+url2Test)
@@ -67,4 +56,3 @@ class urlObject:
             self.urlTested = url2Test
         
         print (self.url+' status code --'+str(self.status_code))
-        #print (self.url+' terminado -----------------------')

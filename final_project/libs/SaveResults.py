@@ -15,11 +15,12 @@ def SaveResults(urlObj):
             urlObj.urlTested+','+
            '\n')
     else:
-        f.write(urlObj.scheme+','+
-            urlObj.netloc+','+
+        f.write(
+            #urlObj.scheme+','+
+            #urlObj.netloc+','+
             urlObj.path+','+
-            urlObj.params+','+
-            urlObj.fragment+','+
+            #urlObj.params+','+
+            #urlObj.fragment+','+
             str(urlObj.status_code)+','+
             urlObj.urlTested+','+
             str(urlObj.headers)+'\n')
