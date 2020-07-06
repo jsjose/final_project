@@ -2,6 +2,7 @@
 # https://docs.python.org/3/library/urllib.parse.html
 
 import requests
+from datetime import datetime 
 from urllib.parse import urlparse
 
 class urlObject:
@@ -29,6 +30,10 @@ class urlObject:
         else:
             url2Test = self.scheme+'://'+self.netloc
         
+        d = datetime.now()
+        self.datetime = str(d)
+        self.urlTested = ''
+        self.headers = ''
         try:
             r = requests.get(url2Test, allow_redirects=AR,timeout=1)
             #self.isAlive = True

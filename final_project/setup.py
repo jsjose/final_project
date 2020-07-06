@@ -18,7 +18,8 @@ def run_project(args):
 
     cursorObj = mydb.conn.cursor()
     
-    cursorObj.execute("CREATE TABLE url(id integer PRIMARY KEY, path text, status_code int, urlTested text, position text, headers text)")
+    #cursorObj.execute("CREATE TABLE url(id integer PRIMARY KEY, path text, status_code int, urlTested text, position text, headers text)")
+    cursorObj.execute("CREATE TABLE url(datetime text, path text, status_code int, urlTested text, headers blob)")
 
     mydb.conn.commit()
 
