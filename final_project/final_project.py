@@ -13,12 +13,13 @@ from libs.test_db import testDB
 def run_project(args):
     
     domainsFile ="data\\domains1"
+    domainsFile ="data\\domains"
     
     with open(domainsFile, 'r', encoding='utf-8') as file:
         file = file.read().splitlines()
     
     # create DB object
-    dbName = '.\\data\\testdb.db'
+    dbName = '.\\data\\testdbv1.db'
     mydb = testDB(dbName)
 
     #processess urls
@@ -30,15 +31,15 @@ def run_project(args):
             #print('url - '+url)
             urlObj = urlObject(urlObj.url,True)
             listaURL.append(urlObj)
-            SaveResults2DB(urlObj, mydb.conn)
+        SaveResults2DB(urlObj, mydb.conn)
 
     # close db
     mydb.close()
 
-    # Save results
-    for urlObj2Save in listaURL:
-        print('urltested ' + urlObj2Save.urlTested)
-        SaveResults2File(urlObj2Save)
+    # Save results to file
+    #for urlObj2Save in listaURL:
+    #    print('urltested ' + urlObj2Save.urlTested)
+    #    SaveResults2File(urlObj2Save)
     
 if __name__ == '__main__':
     #print(os.getcwd())

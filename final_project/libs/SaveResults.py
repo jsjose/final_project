@@ -2,6 +2,10 @@
 
 #from url_data import urlObject
 
+import sqlite3
+
+from sqlite3 import Error
+
 def SaveResults2File(urlObj):
     '''
     Inefficient method to do this, first attempt
@@ -38,9 +42,17 @@ def SaveResults2DB(urlObj,conn):
     
     cursorObj = conn.cursor()
     
-    entities = (urlObj.datetime, urlObj.path, urlObj.status_code, urlObj.urlTested, str(urlObj.headers))
+    entitiesUrl = (urlObj.datetime, urlObj.path)
+    entitiesUrlTested = (urlObj.datetime, urlObj.path, urlObj.status_code, urlObj.urlTested, str(urlObj.headers))
 
-    cursorObj.execute('INSERT INTO url(datetime, path, status_code, urlTested, headers) VALUES(?, ?, ?, ?, ?)', entities)
+    try:
+        cursorObj.execute('INSERT INTO url(datetime, path) VALUES(?, ?)', entitiesUrl)
+    except sqlite3.IntegrityError:
+        print(urlObj.path +' exists')
     
+    cursorObj.execute('INSERT INTO urlTested(datetime, path, status_code, urlTested, headers) VALUES(?, ?, ?, ?, ?)', entitiesUrlTested)
+    #cursorObj.execute('UPDATE url SET datetime = ?, status_code = ?, urlTested = ?, headers = ? WHERE path == ?', entitiesE)
+
     conn.commit()
+    
     return
