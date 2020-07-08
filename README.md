@@ -1,5 +1,5 @@
-Readme
-This is a exercise in python for the course Complete Python Bootcamp in Udemy.
+ ## Readme
+### This is a exercise in python for the course Complete Python Bootcamp in Udemy.
 
 The idea is checking the status of lists of url storing the results.
 
