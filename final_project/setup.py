@@ -12,8 +12,8 @@ def run_project(args):
     '''
     Create DB, create tables
     '''
-    dbName = '.\\data\\testdb.db'
-    dbName = '.\\data\\testdbv1.db'
+    dbName = './/data//testdb.db'
+    dbName = './/data//testdbv1.db'
     #dbName = ''
     mydb = testDB(dbName)
     cursorObj = mydb.conn.cursor()

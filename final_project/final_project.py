@@ -12,8 +12,8 @@ from libs.test_db import testDB
 
 def run_project(args):
     
-    domainsFile ="data\\domains1"
-    domainsFile ="data\\domains"
+    domainsFile ="data//domains"
+    domainsFile ="data//domains1"
     
     with open(domainsFile, 'r', encoding='utf-8') as file:
         file = file.read().splitlines()
