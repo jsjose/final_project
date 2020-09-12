@@ -42,6 +42,5 @@ def run_project(args):
     #    SaveResults2File(urlObj2Save)
     
 if __name__ == '__main__':
-    #print(os.getcwd())
     print('Final project for course Complete Python Bootcamp')
     run_project(sys.argv)
