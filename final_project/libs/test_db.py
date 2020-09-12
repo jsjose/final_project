@@ -8,9 +8,9 @@ class testDB:
         super().__init__()
 
         try:
-            print(dbName)
+            #print(dbName)
             self.conn = sqlite3.connect(dbName)
-            print("Connection is established: Database is created in "+dbName)
+            print("Connection is established: Database is in "+dbName)
         except Error:
             print(Error)
         #finally:
